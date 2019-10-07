@@ -193,8 +193,45 @@ def either_2_4(list)
     return false
 end
 
-puts either_2_4([1, 2, 2, 3, 3, 4])
-puts either_2_4([1, 2, 2, 4, 3, 4])
-puts either_2_4([1, 2, 6, 4, 3, 4])
-puts either_2_4([1, 2, 6, 4, 4, 4])
+# puts either_2_4([1, 2, 2, 3, 3, 4])
+# puts either_2_4([1, 2, 2, 4, 3, 4])
+# puts either_2_4([1, 2, 6, 4, 3, 4])
+# puts either_2_4([1, 2, 6, 4, 4, 4])
 
+# ___________________________________________
+
+def max_span(list)
+    fornt_move = -1
+    i = 0
+    count_nums = 0
+    greatest_count = 0
+    greatest_span = 0
+    list.each do
+        front_move =+ 1
+        num = list[i]
+
+        list.each do
+            if num == list[i] 
+                count_nums = count_nums + 1
+                # puts "in #{num}"
+            end
+
+            if count_nums >= 2
+                # puts i
+                span = i + 1 - front_move
+
+                if span > greatest_span
+                    greatest_span = span
+                end
+            end
+            i = i + 1
+        end
+        i = 0
+    end
+    return greatest_span
+end
+
+
+# puts max_span([1, 2, 87, 72, 4, 17, 2, 96])
+# puts max_span([1, 2, 3, 87, 72, 4, 4, 2, 96, 4, 5, 556, 8567, 3])
+puts max_span([1, 2, 1])
