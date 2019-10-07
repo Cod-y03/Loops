@@ -165,6 +165,7 @@ end
 
 
 def either_2_4(list)
+    count = 0
     i = 0
     list.size.times do
         num = list[i]
@@ -173,13 +174,27 @@ def either_2_4(list)
                 return false
             end
             if list[i - 1] == 2 || list[i + 1] == 2
-                return true
+                count += 1
+            end
+        end
+        if num == 4
+            if list[i - 1] == 2 || list[i + 1] == 2
+                return false
+            end
+            if list[i - 1] == 4 || list[i + 1] == 4
+                count += 1
             end
         end
         i += 1
     end
+    if count >= 1
+        return true
+    end
     return false
 end
 
-puts either_2_4([1, 2, 2, 3, 4])
+puts either_2_4([1, 2, 2, 3, 3, 4])
+puts either_2_4([1, 2, 2, 4, 3, 4])
+puts either_2_4([1, 2, 6, 4, 3, 4])
+puts either_2_4([1, 2, 6, 4, 4, 4])
 
